@@ -1,0 +1,146 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 bg-dark sticky-top" id="sticky-sidebar" style="height: 100vh;">
+      <div class="sticky-top">
+        <app-main-sidebar></app-main-sidebar>
+      </div>
+    </div>
+
+    <div class="col-9 order-2" style="padding-left: 20px;">
+      <br><br>
+      <h1 style="padding-top: 10px;">Main Dashboard</h1>
+      <p *ngIf="authService.isLoggedIn()">
+        Welcome {{ authService.currentUser.user }}
+      </p>
+
+      <h3 style="padding-top: 20px;">The Last New Orders</h3>
+      <div class="card card-body">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Shop</th>
+              <th>Seller</th>
+              <th>Product</th>
+              <th>Customer</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td>{{ order.id }}</td>
+              <td>{{ order.shop_name }}</td>
+              <td>{{ order.seller_name }}</td>
+              <td>{{ order.product_name }}</td>
+              <td>{{ order.customer_name }}</td>
+              <td>{{ order.order_description }}</td>
+              <td>
+                <button [routerLink]="['/orders', order.id]" type="button" class="btn btn-secondary btn-sm mr-2" data-toggle="modal" data-target="#myModal">
+                  View
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr>
+      <h3 style="padding-top: 20px;">The Last New Products</h3>
+      <div class="card card-body">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Shop</th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Date created</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td>{{ product.id }}</td>
+              <td>{{ product.product_shop }}</td>
+              <td>{{ product.product_name }}</td>
+              <td>{{ product.product_price | currency }}</td>
+              <td>{{ product.product_quantity }}</td>
+              <td>{{ product.date_created | date }}</td>
+              <td>{{ product.product_description }}</td>
+              <td>
+                <button [routerLink]="['/products', product.id]" type="button" class="btn btn-secondary btn-sm mr-2" data-toggle="modal" data-target="#myModal">
+                  View
+                </button>
+              </td>
+          </tbody>
+        </table>
+      </div>
+
+      <hr>
+      <h3 style="padding-top: 20px;">The Last New Sellers</h3>
+      <div class="card card-body">
+        <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Shop</th>
+            <th>Seller</th>
+            <th>Email</th>
+            <th>Date created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let seller of sellers">
+            <td>{{ seller.id }}</td>
+            <td>{{ seller.seller_shop }}</td>
+            <td>{{ seller.seller_name }}</td>
+            <td>{{ seller.seller_email }}</td>
+            <td>{{ seller.date_created | date }}</td>
+            <td>
+              <button [routerLink]="['/sellers', seller.id]" type="button" class="btn btn-secondary btn-sm mr-2" data-toggle="modal" data-target="#myModal">
+                View
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+    <h3 style="padding-top: 20px;">The Last New Shops</h3>
+    <div class="col-md-12">
+      <div class="card card-body">
+        <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Shop</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let shop of shops">
+            <td>{{ shop.id }}</td>
+            <td>{{ shop.shop_name }}</td>
+            <td>{{ shop.date_created | date }}</td>
+            <td>
+              <button routerLink="/shop-dashboard" type="button" class="btn btn-secondary btn-sm mr-2" data-toggle="modal" data-target="#myModal">
+                View
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    </div>
+  </div>
+</div>

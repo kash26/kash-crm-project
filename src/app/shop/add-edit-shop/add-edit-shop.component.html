@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <div class="mb-3">
+    <div class="form-group">
+      <label for="uname">Shop name:</label>
+      <input formControlName="shop_name" type="text" class="form-control" id="uname" placeholder="Enter product name" name="uname" required>
+    </div>
+  </div>
+  <div *ngIf="fake_id == 0" class="modal-footer">
+    <button (click)="addShop()" type="submit" class="btn btn-outline-primary">Save</button>
+  </div>
+  <div *ngIf="fake_id > 0" class="modal-footer">
+    <button (click)="editShop()" type="submit" class="btn btn-outline-primary">Edit</button>
+  </div>
+  <div *ngIf="fake_id == -1" class="modal-footer">
+    <button (click)="deleteShop()" type="submit" class="btn btn-outline-danger">Delete</button>
+  </div>
+</form>

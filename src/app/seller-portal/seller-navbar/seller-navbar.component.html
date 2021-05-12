@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">App Icon</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+   <ul class="navbar-nav">
+      <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.admin"
+      routerLinkActive="active current" class="nav-item">
+      <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.admin"
+          routerLinkActive="active current" class="nav-item">
+        <a  class="nav-link"
+            routerLink="/orders"
+            [queryParams]="{ page: 1, order: 'newest' }">Orders</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.admin"
+          routerLinkActive="active current" class="nav-item">
+        <a class="nav-link" routerLink="/products">Products</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.admin"
+          routerLinkActive="active current" class="nav-item">
+        <a class="nav-link" routerLink="/sellers">Sellers</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.admin"
+          routerLinkActive="active current" class="nav-item">
+        <a class="nav-link" routerLink="/shops">Shops</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.admin"
+          routerLinkActive="active current" class="nav-item">
+        <a class="nav-link" routerLink="/masters">Masters</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.admin"
+          routerLinkActive="active current" class="nav-item">
+        <a class="nav-link" routerLink="/managers">Managers</a>
+      </li>
+      <!-- SHOP PORTAL SECTION -->
+      <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.master"
+            routerLinkActive="active current" class="nav-item">
+        <a class="nav-link"
+            [routerLink]="['/shop-master', shop_id, master_id]"
+            routerLink="/shop-master">Master Profile</a>
+      </li>
+      <!-- SELLER PORTAL SECTION -->
+      <li *ngIf="authService.isLoggedIn()"
+            routerLinkActive="active current" class="nav-item">
+        <a class="nav-link"
+            [routerLink]="['/shop-seller', shop_id, seller_id]"
+            routerLink="/shop-master">Seller Profile</a>
+      </li>
+      <li *ngIf="!authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+        <a class="nav-link" routerLink="/">Signin</a>
+      </li>
+      <li *ngIf="!authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+        <a class="nav-link" routerLink="/signup">Signup</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+        <a class="float-lg-end" class="nav-link" (click)="authService.logout()" href="#">Signout</a>
+      </li>
+   </ul>
+ </div>
+</nav>

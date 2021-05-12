@@ -1,0 +1,32 @@
+<p>Links in this section will be related to a specific shop:</p>
+<ul class="navbar-nav">
+  <li routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" routerLink="/home">Home</a>
+  </li>
+  <li routerLinkActive="active current" class="nav-item">
+    <a  class="nav-link"
+        routerLink="/orders"
+        [queryParams]="{ page: 1, order: 'newest' }">Orders</a>
+  </li>
+  <li routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" routerLink="/products">Products</a>
+  </li>
+  <li routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" routerLink="/sellers">Sellers</a>
+  </li>
+  <li routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" routerLink="/shops">Shops</a>
+  </li>
+  <li routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" routerLink="/managers">Managers</a>
+  </li>
+  <li *ngIf="!authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" routerLink="/">Signin</a>
+  </li>
+  <li *ngIf="!authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" routerLink="/signup">Signup</a>
+  </li>
+  <li *ngIf="authService.isLoggedIn()" routerLinkActive="active current" class="nav-item">
+    <a class="float-lg-end" class="nav-link" (click)="authService.logout()" href="#">Signout</a>
+  </li>
+</ul>

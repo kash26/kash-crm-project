@@ -1,0 +1,42 @@
+<form [formGroup]="form">
+  <!-- <div class="mb-3">
+    <label for="contactMethod">Shop:</label>
+    <select formControlName="shop" name="contactMethod" id="contactMethod" class="form-select" placeholder="Pick a shop..." aria-label="Default select example">
+      <option selected>Pick a shop...</option>
+      <option *ngFor="let shop of shops" [value]="shop.id">{{ shop.shop_name }}</option>
+    </select>
+  </div> -->
+  <div class="mb-3">
+    <div class="form-group">
+      <label for="uname">Username:</label>
+      <input formControlName="username" type="text" class="form-control" id="uname" placeholder="Enter product name" name="uname" required>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="form-group">
+      <label for="uname">Email:</label>
+      <input formControlName="email" type="email" class="form-control" id="uname" placeholder="Enter product name" name="uname" required>
+    </div>
+  </div>
+  <div *ngIf="fake_id == 0" class="mb-3">
+    <div class="form-group">
+      <label for="uname">Password:</label>
+      <input formControlName="password" type="password" class="form-control" id="uname" placeholder="Enter product name" name="uname" required>
+    </div>
+  </div>
+  <div *ngIf="fake_id == 0" class="mb-3">
+    <div class="form-group">
+      <label for="uname">Confirm Password:</label>
+      <input formControlName="password2" type="password" class="form-control" id="uname" placeholder="Enter product name" name="uname" required>
+    </div>
+  </div>
+  <!-- <div *ngIf="fake_id == 0" class="modal-footer">
+    <button (click)="addMaster()" type="submit" class="btn btn-outline-primary">Save</button>
+  </div> -->
+  <div *ngIf="fake_id > 0" class="modal-footer">
+    <button (click)="editSeller()" type="submit" class="btn btn-outline-primary">Edit</button>
+  </div>
+  <!-- <div *ngIf="fake_id == -1" class="modal-footer">
+    <button (click)="deleteMaster()" type="submit" class="btn btn-outline-danger">Delete</button>
+  </div> -->
+</form>

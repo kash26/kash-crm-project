@@ -1,0 +1,50 @@
+<shop-navbar></shop-navbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 bg-dark sticky-top" id="sticky-sidebar" style="height: 100vh;">
+      <div class="sticky-top">
+        <shop-sidebar></shop-sidebar>
+      </div>
+    </div>
+
+      <div class="col-10 order-2" style="padding-left: 20px;">
+        <br><br>
+        <h1 style="padding-top: 10px;">Master Single Page</h1>
+        <p *ngIf="authService.isLoggedIn()">
+          Welcome {{ authService.currentUser.user }}
+        </p>
+
+        <hr>
+      <div class="card card-body">
+        <table class="table table-sm">
+          <tr>
+            <th>Master ID</th>
+            <td>{{ master?.id }}</td>
+          </tr>
+          <tr>
+            <th>Manager</th>
+            <td>{{ master?.master_manager }}</td>
+          </tr>
+          <tr>
+            <th>Shop</th>
+            <td>{{ master?.master_shop_name }}</td>
+          </tr>
+          <tr>
+            <th>Master</th>
+            <td>{{ master?.master_name }}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{ master?.master_email }}</td>
+          </tr>
+          <tr>
+            <th>Date created</th>
+            <td>{{ master?.date_created | date }}</td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+	</div>
+</div>

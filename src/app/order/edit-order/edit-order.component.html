@@ -1,0 +1,49 @@
+
+<div class="container">
+
+  <div class="col-md-10">
+
+    <form [formGroup]="form" (ngSubmit)="editOrder()" class="was-validated">
+      <div class="form-group">
+        <label for="contactMethod">Shop:</label>
+        <select formControlName="shop" name="contactMethod" id="contactMethod" placeholder="Pick a shop..." class="form-control">
+          <option value="" selected disabled>Pick a shop...</option>
+          <option *ngFor="let shop of shops" [value]="shop.id">{{ shop.shop_name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="contactMethod">Seller:</label>
+        <select formControlName="seller" name="contactMethod" id="contactMethod" placeholder="Pick a seller..." class="form-control">
+          <option selected>Pick a seller...</option>
+          <option *ngFor="let seller of sellers" [value]="seller.id">{{ seller.seller_name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="contactMethod">Product:</label>
+        <select formControlName="product" name="contactMethod" id="contactMethod" placeholder="Pick a product..." class="form-control">
+          <option selected>Pick a product...</option>
+          <option *ngFor="let product of products" [value]="product.id">{{ product.product_name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="uname">Customer name:</label>
+        <input formControlName="customer_name" type="text" class="form-control" id="uname" placeholder="Enter customer name" name="uname" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <div class="form-group">
+        <label for="uname">Customer phone:</label>
+        <input formControlName="customer_phone" type="text" class="form-control" id="uname" placeholder="Enter customer phone" name="uname" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <div class="form-group">
+        <label for="uname">Description:</label>
+        <input formControlName="order_description" type="text" class="form-control" id="uname" placeholder="Enter description" name="uname" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <button (click)="onCloseModal($event)" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

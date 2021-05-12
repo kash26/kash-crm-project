@@ -1,0 +1,51 @@
+
+<p>Links in this section will be related to a specific shop:</p>
+<ul class="navbar-nav">
+  <li routerLinkActive="active current" class="nav-item">
+    <h3>Shop Menu</h3>
+  </li>
+  <li routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" [routerLink]="['/seller-dashboard', shop_id]">Seller-dashboard</a>
+  </li>
+  <li routerLinkActive="active current" class="nav-item">
+    <a  class="nav-link"
+        [routerLink]="['/seller-shop-order', shop_id]"
+        [queryParams]="{ page: 1, order: 'newest' }">Seller-orders</a>
+  </li>
+  <li routerLinkActive="active current" class="nav-item">
+    <a class="nav-link"
+        [routerLink]="['/seller-shop-products', shop_id]"
+        routerLink="/products">Shop-products</a>
+  </li>
+  <!-- <li routerLinkActive="active current" class="nav-item">
+    <a class="nav-link"
+        [routerLink]="['/shop-seller', shop_id]"
+        routerLink="/sellers">Shop-sellers</a>
+  </li> -->
+  <!-- <li *ngIf="authService.isLoggedIn() && this.authService?.currentUser.admin"
+      routerLinkActive="active current" class="nav-item">
+    <a class="nav-link" routerLink="/shops">All Shops</a>
+  </li> -->
+  <br>
+  <li routerLinkActive="active current" class="nav-item">
+    <button type="button" class="btn btn-danger"
+            data-toggle="modal" data-target="#myModal"
+            (click)="open(content); addOrder()">Create Order</button>
+  </li>
+</ul>
+
+
+<!-- MODAL WINDOW SECTION -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ modalTitle }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-add-edit-delete-order
+      (submit)="modal.close('Save click')"
+      [order]="order" [fake_id]="fake_id" *ngIf="activateAddEditProdComp"></app-add-edit-delete-order>
+  </div>
+</ng-template>
